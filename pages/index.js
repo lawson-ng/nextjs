@@ -1,11 +1,22 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import Image from 'next/image'
+
+const Profile = () => (
+  <Image
+    src='../public/images/avatar.jpg'
+    height={144}
+    width={144}
+    alt={'Abraham Lawson'}
+  />
+)
 
 export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>Abraham Lawson Here !</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
@@ -14,6 +25,7 @@ export default function Home() {
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
 
+        <p>Link <Link href='posts/first-post'><a>First Post</a></Link></p>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.js</code>
