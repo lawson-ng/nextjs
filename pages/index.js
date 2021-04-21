@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
-import Link from 'next/link'
 import Image from 'next/image'
 import { getSortedPostsData } from '../lib/post'
+import Link from 'next/link'
+import Date from '../components/date'
+import utilStyles from '../styles/utils.module.css'
 
 export async function getStaticProps(){
   const allPostsData = getSortedPostsData()
@@ -35,28 +37,19 @@ export default function Home({ allPostsData }) {
         <h2 >Blog</h2>
         <ul >
           {allPostsData.map(({ id, date, title }) => (
-            <li  key={id}>
-              {title}
+            <li className={utilStyles.listItem} key={id}>
+              <Link href={`/posts/${id}`}>
+                <a>{title}</a>
+              </Link>
               <br />
-              {id}
-              <br />
-              {date}
+              <small className={utilStyles.lightText}>
+                <Date dateString={date} />
+              </small>
             </li>
           ))}
         </ul>
       </section>
       </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
     </div>
   )
 }
