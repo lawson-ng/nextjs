@@ -2,9 +2,9 @@ import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Image from 'next/image'
 import { getSortedPostsData } from '../lib/post'
-import Link from 'next/link'
 import Date from '../components/date'
 import utilStyles from '../styles/utils.module.css'
+import Card from '../components/card'
 
 export async function getStaticProps(){
   const allPostsData = getSortedPostsData()
@@ -24,19 +24,32 @@ const Profile = () => (
   />
 )
 
+const renderPostCards = (listPosts = []) => {
+  return listPosts.map(post => {
+    return (
+      <Card
+        id={post.id}
+        title={post.title}
+        date={post.date}
+      />
+    )
+  })
+}
+
+const title = 'Coder Light'
+
 export default function Home({ allPostsData }) {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Abraham Lawson Here !</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Coder Light</title>
+        <lin3k rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={styles.main}>
-      <section >
-        <h2 >Blog</h2>
-        <ul >
-          {allPostsData.map(({ id, date, title }) => (
+        <h2>{title}</h2>
+        <ul>
+          {renderPostCards(allPostsData)}
+          {/* {allPostsData.map(({ id, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
               <Link href={`/posts/${id}`}>
                 <a>{title}</a>
@@ -46,10 +59,9 @@ export default function Home({ allPostsData }) {
                 <Date dateString={date} />
               </small>
             </li>
-          ))}
+          ))} */}
         </ul>
-      </section>
-      </main>
+      
     </div>
   )
 }
