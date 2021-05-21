@@ -40,7 +40,7 @@ export default function Home({ allPostsData, me }) {
         <lin3k rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="d-flex flex-column">
+      <div id="home" className="d-flex flex-column">
         <div className="row justify-content-center">
             <Image
               priority
