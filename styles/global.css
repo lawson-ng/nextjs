@@ -2,6 +2,7 @@
   background: white;
   background-image: radial-gradient(black 1px, transparent 0);
   background-size: 25px 25px;
+  min-height: inherit;
 }
 
 * {
