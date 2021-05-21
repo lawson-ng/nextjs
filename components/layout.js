@@ -2,7 +2,7 @@ import Head from 'next/head'
 
 export default function Layout({children}) {
     return (
-        <div className={'container bg-light min-vh-100 mr-auto'}>
+        <div className={'min-vh-100 mr-auto'}>
             <Head>
                 <link rel='icon' href="/favicon.ico" />
                 <meta
